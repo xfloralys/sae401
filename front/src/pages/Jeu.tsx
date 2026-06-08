@@ -1,12 +1,10 @@
 import ListCards from "../components/card/ListCards";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useCardStore } from "../stores/card/useCardStore";
-import type { Card } from "../types/card";
+import { useCardActions } from "../stores/card/card.selectors";
 
 const Jeu = () => {
-   const {cards} = useCardStore();
-   const randomCards: Card[] = randomizeCards(cards, 5).filter((key, value) => value != undefined) as Card[];
+   const {randomizeCards} = useCardActions();
 
    return (
       <>
@@ -15,7 +13,7 @@ const Jeu = () => {
             <section>
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
                <ListCards
-                  cards={randomCards}
+                  cards={randomizeCards(5)}
                ></ListCards>
             </section>
          </main>
@@ -23,14 +21,5 @@ const Jeu = () => {
       </>
    )
 } 
-
-// Choix aléatoire des cartes
-function randomizeCards(cards: Card[], nbCards: number) {
-   const randomCards = [];
-   for (let i = 0; i < nbCards; i++) {
-      randomCards[i] = cards.at(Math.ceil(Math.random() * (cards.length - 1)))
-   }
-   return randomCards;
-}
 
 export default Jeu;

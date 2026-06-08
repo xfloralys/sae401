@@ -3,7 +3,7 @@ import type { CardStore } from "./card.types";
 import data from '../../script/data.json';
 import type { Card } from "../../types/card";
 
-export const useCardStore = create<CardStore>((set) => ({
+export const useCardStore = create<CardStore>((set, get) => ({
     cards: [],
     status: "idle",
     actions: {
@@ -17,6 +17,14 @@ export const useCardStore = create<CardStore>((set) => ({
             set(() => ({status: "success"}));
             set(() => ({cards: formattedData}));
             return formattedData;
+        },
+        randomizeCards: (nbCards: number) => {
+            const {cards} = get();
+            const randomCards = [];
+            for (let i = 0; i < nbCards; i++) {
+                randomCards[i] = cards.at(Math.ceil(Math.random() * (cards.length - 1)))
+            }
+            return randomCards.filter((key, value) => value != undefined) as Card[];
         }
     }
 }))

@@ -7,5 +7,6 @@ export type CardStore = {
 }
 
 export type CardActions = {
-    loadCards: () => void;
+    loadCards: () => void,
+    randomizeCards: (nbCards: number) => Card[];
 }
