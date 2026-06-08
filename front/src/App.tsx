@@ -3,7 +3,7 @@ import { Routes } from "react-router";
 import { Route } from "react-router";
 
 // Page d'Accueil
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 import Accueil from "./pages/Accueil";
 
 // Page Inscription et Connexion
@@ -33,18 +33,18 @@ import ExpoComposer from "./pages/ExpoComposer";
 import MyExpo from "./pages/MyExpo";
 import Page404 from "./pages/Page404";
 
-import { useArtworkActions, useArtworksStatus } from "./stores/artwork/useArtworkStore";
+import { useCardActions, useCardsStatus } from "./stores/card/card.selectors";
 import { useEffect } from "react";
 
 const App = () => {
-  const {loadArtworks} = useArtworkActions();
-  const artworksStatus = useArtworksStatus();
+  const {loadCards} = useCardActions();
+  const cardsStatus = useCardsStatus();
 
   useEffect(() => {
-    loadArtworks();
-  }, [loadArtworks]);
+    loadCards();
+  }, [loadCards]);
 
-  if (artworksStatus === "loading" || artworksStatus === "idle") {
+  if (cardsStatus === "loading" || cardsStatus === "idle") {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-xl">Chargement...</p>
@@ -52,7 +52,7 @@ const App = () => {
     );
   };
 
-  if (artworksStatus === "error") {
+  if (cardsStatus === "error") {
     return (
       <div className="flex items-center justify-center h-screen">
         <p className="text-xl">Erreur lors du chargement des œuvres. Recommencez ultérieurement</p>
@@ -64,7 +64,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         // Accueil
-        {/* <Route path="/" element={<Home/>}></Route> */}
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/accueil" element={<Accueil/>}></Route>
 
         // Inscription & Connexion 
