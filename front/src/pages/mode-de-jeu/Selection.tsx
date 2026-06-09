@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 
 const Selection = () => {
    return (
-      <>
+      <body className="grid min-h-screen grid-rows-[auto_1fr_auto]">
          <Header />
          <main className="container mx-auto p-4">
             <section className="text-center">
@@ -26,7 +26,7 @@ const Selection = () => {
             </section>
          </main>
          <Footer />
-      </>
+      </body>
    )
 }
 
