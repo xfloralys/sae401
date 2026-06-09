@@ -2,10 +2,98 @@
 @layer base {
     h1 
     {
-        @apply text-3xl font-bold;
+        @apply font-ztnature text-3xl font-bold;
     }
     h2 {
-        @apply text-2xl font-bold my-8;
+        @apply font-ztnature text-2xl font-bold my-8;
     }
 
+}
+
+
+/* ===== FONTS ===== */
+/* Importation de ZT Nature */
+@font-face {
+  font-family: "ZT Nature";
+  src: url("./assets/fonts/ZTNature/ZTNature-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ZT Nature";
+  src: url("./assets/fonts/ZTNature/ZTNature-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "ZT Nature";
+  src: url("./assets/fonts/ZTNature/ZTNature-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ZT Nature";
+  src: url("./assets/fonts/ZTNature/ZTNature-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Importation de ZT Bros Oskon 90s */
+/* @font-face {
+  font-family: "ZT Bros Oskon 90s";
+  src: url("./assets/fonts/ZTBrosOskon90s/ZTBrosOskon90s-ExtLtIta.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "ZT Bros Oskon 90s";
+  src: url("./assets/fonts/ZTBrosOskon90s/ZTBrosOskon90s-ExtraLight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ZT Bros Oskon 90s";
+  src: url("./assets/fonts/ZTBrosOskon90s/ZTBrosOskon90s-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ZT Bros Oskon 90s";
+  src: url("./assets/fonts/ZTBrosOskon90s/ZTBrosOskon90s-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "ZT Bros Oskon 90s";
+  src: url("./assets/fonts/ZTBrosOskon90s/ZTBrosOskon90s-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* Importation de Crimson Pro */
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("./assets/fonts/CrimsonPro/CrimsonPro-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("./assets/fonts/CrimsonPro/CrimsonPro-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: italic;
+}
+
+@theme {
+  --font-ztnature: "ZT Nature", sans-serif;
+  /* --font-zt90s: "ZT Bros Oskon 90s", serif; */
+    --font-crimson-pro: "Crimson Pro", serif;
 }

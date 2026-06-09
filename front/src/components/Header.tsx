@@ -19,9 +19,9 @@ const Header=()=> {
                     <NavLink key={item.to} to={item.to} className={({isActive}) => `text-white px-4 py-2 rounded-lg ${item.bgColor} ${isActive ? "shadow-lg shadow-black/50" : ""}`}>{item.label}</NavLink>
                 ))}
 
-                <NavLink to="/" className="px-[24px] py-[16px] bg-red-500">S'incrire</NavLink>
+                <NavLink to="/inscription" className="italic text-[14px] px-[24px] py-[16px] bg-red-500 rounded-sm">S'incrire</NavLink>
 
-                <NavLink to="/" className="px-[24px] py-[16px] bg-red-500">Connexion</NavLink>
+                <NavLink to="/connexion" className="italic text-[14px] px-[24px] py-[16px] bg-red-500 rounded-sm">Se connecter</NavLink>
                 
             </nav>
 
