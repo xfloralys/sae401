@@ -18,13 +18,30 @@ export const useCardStore = create<CardStore>((set, get) => ({
             set(() => ({cards: formattedData}));
             return formattedData;
         },
-        randomizeCards: (nbCards: number) => {
+        generatePlayerCards: (nbCards: number) => {
+            const {actions} = get();
+            return actions.rerollDuplicateCards(actions.randomizeCards(nbCards)) as Card[];
+        },
+        rollRandomCard: () => {
             const {cards} = get();
+            return cards.at(Math.ceil(Math.random() * (cards.length - 1))) as Card;
+        },
+        randomizeCards: (nbCards: number) => {
+            const {actions} = get();
             const randomCards = [];
             for (let i = 0; i < nbCards; i++) {
-                randomCards[i] = cards.at(Math.ceil(Math.random() * (cards.length - 1)))
+                randomCards[i] = actions.rollRandomCard();
             }
             return randomCards.filter((key, value) => value != undefined) as Card[];
+        },
+        setNbCardsFromDifficulty: (difficulte: number) => {
+            return 5 + 2 * difficulte;
+        },
+        rerollDuplicateCards: (currentCards: Card[]) => {
+            const {cards, actions} = get();
+            while (cards.find((c) => c === currentCards.at(c.id)) !== null) {
+                return actions.randomizeCards(currentCards.length);
+            }
         }
     }
 }))

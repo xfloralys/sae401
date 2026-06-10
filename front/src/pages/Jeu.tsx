@@ -4,7 +4,8 @@ import Header from "../components/Header";
 import { useCardActions } from "../stores/card/card.selectors";
 
 const Jeu = () => {
-   const {randomizeCards} = useCardActions();
+   const {generatePlayerCards, setNbCardsFromDifficulty} = useCardActions();
+   const diff = 0; // A éventuellement replacer par un paramètre dans l'URL (Route)
 
    return (
       <>
@@ -13,7 +14,7 @@ const Jeu = () => {
             <section>
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
                <ListCards
-                  cards={randomizeCards(5)}
+                  cards={generatePlayerCards(setNbCardsFromDifficulty(diff))}
                ></ListCards>
             </section>
          </main>
