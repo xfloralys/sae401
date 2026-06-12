@@ -1,8 +1,8 @@
-import Header from "../../components/Header";
+import Header from "../components/Header";
 import { NavLink } from "react-router";
-import Footer from "../../components/Footer";
+import Footer from "../components/Footer";
 
-const Challenge = () => {
+const Entrainement = () => {
    return (
       <>
          <Header />
@@ -29,4 +29,4 @@ const Challenge = () => {
    )
 } 
 
-export default Challenge;
+export default Entrainement;
