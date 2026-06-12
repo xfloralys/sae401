@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-const ChoixDifficulte = () => {
+const ModeDeJeu = () => {
    return (
          <main className="grid min-h-screen grid-rows-[auto_1fr_auto]">
             <Header />
@@ -37,4 +37,4 @@ const ChoixDifficulte = () => {
    )
 }
 
-export default ChoixDifficulte;
+export default ModeDeJeu;

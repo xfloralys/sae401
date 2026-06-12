@@ -11,19 +11,11 @@ import Inscription from "./pages/Inscription";
 import Connexion from "./pages/Connexion";
 
 // Mode de jeu
-import Selection from "./pages/Selection";
-import Entrainement from "./pages/Entrainement";
-import Classique from "./pages/mode-de-jeu/Classique";
-import Challenge from "./pages/Difficulte";
+import ModeDeJeu from "./pages/ModeDeJeu";
 
-import ChoixDifficulte from "./pages/ChoixDifficulte";
-
-import ChoixDifficulte from "./pages/ChoixDifficulte";
 
 // Difficultés
-import Facile from "./pages/difficultes/Facile";
-import Moyen from "./pages/difficultes/Moyen";
-import Difficile from "./pages/difficultes/Difficile";
+
 
 // Jeu 
 import Jeu from "./pages/Jeu"
@@ -76,16 +68,11 @@ const App = () => {
         <Route path="/connexion" element={<Connexion/>}></Route>
 
         // Mode de jeu
-        <Route path="/selection" element={<Selection/>}></Route>
-        <Route path="/entrainement" element={<Entrainement/>}></Route>
-        <Route path="/classique" element={<Classique/>}></Route>
-        <Route path="/challenge" element={<Challenge/>}></Route>
-        <Route path="/choix-difficulte" element={<ChoixDifficulte/>}></Route>
+
+        <Route path="/mode-de-jeu" element={<ModeDeJeu/>}></Route>
 
         // Difficultés
-        <Route path="/facile" element={<Facile/>}></Route>
-        <Route path="/moyen" element={<Moyen/>}></Route>
-        <Route path="/difficile" element={<Difficile/>}></Route>
+
 
         // Jeu
         <Route path="/jeu" element={<Jeu/>}></Route>
