@@ -18,6 +18,8 @@ import Challenge from "./pages/Difficulte";
 
 import ChoixDifficulte from "./pages/ChoixDifficulte";
 
+import ChoixDifficulte from "./pages/ChoixDifficulte";
+
 // Difficultés
 import Facile from "./pages/difficultes/Facile";
 import Moyen from "./pages/difficultes/Moyen";
