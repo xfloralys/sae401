@@ -26,8 +26,8 @@ const CardPreview = ({ card, onViewDetail = () => {} }: Props) => {
         <article className="bg-white shadow-xl rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl">
             <div className="h-120 overflow-hidden">
                 <img
-                    src={card[7]}
-                    alt={card[2]}
+                    src={card.image}
+                    alt={card.player}
                     className="w-full h-full object-cover object-top"
                 />
             </div>
@@ -35,22 +35,22 @@ const CardPreview = ({ card, onViewDetail = () => {} }: Props) => {
                 <h3 id={headingId}
                     className="text-xl font-semibold text-gray-800 truncate"
                 >
-                    {card[2]}
+                    {card.player}
                 </h3>
                 <h4 id={headingId}
                     className="text-lg text-gray-800 truncate"
                 >
-                    Équipe : {card[3]}
+                    Équipe : {card.team}
                 </h4>
                 <h4 id={headingId}
                     className="text-lg italic text-gray-800 truncate"
                 >
-                    {card[1]}
+                    {card.season}
                 </h4>
                 <ul id={headingId} className="text-gray-800 truncate grid grid-cols-3 justify-items-center pt-4">
-                    <li><p>Points : {card[4]}</p></li>
-                    <li><p>Rebonds : {card[5]}</p></li>
-                    <li><p>Assists : {card[6]}</p></li>
+                    <li><p>Points : {card.pointsPerGame}</p></li>
+                    <li><p>Rebonds : {card.reboundsPerGame}</p></li>
+                    <li><p>Assists : {card.assistsPerGame}</p></li>
                 </ul>
 
             </div>

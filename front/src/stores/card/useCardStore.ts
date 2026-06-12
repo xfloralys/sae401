@@ -11,9 +11,22 @@ export const useCardStore = create<CardStore>((set, get) => ({
             set(() => ({status: "loading"}));
             // console.log(data);
             const formattedData: Card[] = Object.create(
-                data.map((c, idx) => [idx, c.Season, c.Player, c.Tm, c.PTS, c.TRB, c.AST, c.Image])
+                data.map((c, idx) => {
+                    const card = {};
+                    Object.defineProperties(card, {
+                        id: {value: idx},
+                        season: {value: c.Season},
+                        player: {value: c.Player},
+                        team: {value: c.Tm},
+                        pointsPerGame: {value: c.PTS},
+                        reboundsPerGame: {value: c.TRB},
+                        assistsPerGame: {value: c.AST},
+                        image: {value: c.Image}
+                    })
+                    return card as Card;
+                })
             );
-            // console.log(formattedData);
+            console.log(formattedData);
             set(() => ({status: "success"}));
             set(() => ({cards: formattedData}));
             return formattedData;
