@@ -48,9 +48,9 @@ const CardPreview = ({ card, onViewDetail = () => {} }: Props) => {
                     {card.season}
                 </h4>
                 <ul id={headingId} className="text-gray-800 truncate grid grid-cols-3 justify-items-center pt-4">
-                    <li><p>Points : {card.pointsPerGame}</p></li>
-                    <li><p>Rebonds : {card.reboundsPerGame}</p></li>
-                    <li><p>Assists : {card.assistsPerGame}</p></li>
+                    <li><p>PTS : {card.pointsPerGame}</p></li>
+                    <li><p>TRB : {card.reboundsPerGame}</p></li>
+                    <li><p>AST : {card.assistsPerGame}</p></li>
                 </ul>
 
             </div>
