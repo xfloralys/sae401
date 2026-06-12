@@ -17,7 +17,7 @@ const Accueil = () => {
             Saurez-vous replacer chaque MVP des Finales NBA à la bonne année ? Testez vos connaissances et reconstruisez l'histoire de la NBA, une carte à la fois.
           </p>
             
-          <NavLink to="/inscription" className="btn-primary">Commencer</NavLink>
+          <NavLink to="/mode-de-jeu" className="btn-primary">Commencer</NavLink>
 
 
         </section>
