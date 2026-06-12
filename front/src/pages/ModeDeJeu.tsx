@@ -4,24 +4,34 @@ import Header from "../components/Header";
 
 const ModeDeJeu = () => {
    return (
-         <main className="grid min-h-screen grid-rows-[auto_1fr_auto]">
-            <Header />
-            <section>
-                <form action="#" method="post">
-                    <div className="p-2">
-                        <label htmlFor="">Choix de la difficulté</label>
-                        <div className="flex flex-wrap gap-2">
-                            <input className="bouton-diff" type="button" id="diff-0" value="Facile"/>
-                            <input className="bouton-diff" type="button" id="diff-1" value="Moyen"/>
-                            <input className="bouton-diff" type="button" id="diff-2" value="Difficile"/>
+    <div className="grid min-h-screen grid-rows-[auto_1fr_auto]">
+        <Header />
+
+        <main className="container mx-auto px-8 min-h-[calc(100vh-140px)] flex justify-center items-center">
+            <section className="">
+               <h2 className="text-center">Mode de jeu</h2>
+
+               <p className="text-center">
+                  Lorem ipsum dolor sit amet consectetur vestibulum at dictum
+                  viverra mi fermentum at pellentesque risus rhoncus.
+               </p>
+
+               <form action="#" method="post" className="pt-10">
+                    <div className="w-full flex flex-col justify-center items-center gap-2 pb-8">
+                        <h4>Choix du mode de jeu</h4>
+                        <div className="w-full flex flex-col justify-center items-center gap-2 pb-8">
+                            <input className="bouton-mode btn-primary" type="button" id="mode-0" value="Entraînement"/>
+                            <input className="bouton-mode btn-primary" type="button" id="mode-1" value="Classique"/>
+                            <input className="bouton-mode btn-primary" type="button" id="mode-2" value="Challenge"/>
                         </div>
                     </div>
-                    <div className="p-2">
-                        <label htmlFor="">Choix du mode de jeu</label>
+
+                    <div className="w-full flex flex-col justify-center items-center gap-2">
+                        <h4>Choix de la difficulté</h4>
                         <div className="flex flex-wrap gap-2">
-                            <input className="bouton-mode" type="button" id="mode-0" value="Entraînement"/>
-                            <input className="bouton-mode" type="button" id="mode-1" value="Classique"/>
-                            <input className="bouton-mode" type="button" id="mode-2" value="Challenge"/>
+                            <input className="bouton-diff" type="button" id="diff-0" value="Rookie"/>
+                            <input className="bouton-diff" type="button" id="diff-1" value="Sophomore"/>
+                            <input className="bouton-diff" type="button" id="diff-2" value="Veteran"/>
                         </div>
                     </div>
                     <p className="p-diff">Choix actuel de la difficulté : Moyen</p>
@@ -32,8 +42,11 @@ const ModeDeJeu = () => {
                     </Link>
                 </form>
             </section>
-            <Footer />
          </main>
+    
+        <Footer />
+    </div>
+
    )
 }
 
