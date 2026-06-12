@@ -86,7 +86,7 @@ const ModeDeJeu = () => {
                     </p>
                     
                     {/* A faire : passer ce qui a été choisi en paramètre*/}
-                    <Link to={{pathname: `/jeu`, search: `?diff=diff-1&mode=mode-1`}}>
+                    <Link to={{pathname: `/jeu`, search: `?diff=${difficultyChoices.find(diff => diff.id === selectedDifficulty)?.id}&mode=${gameModes.find(mode => mode.id === selectedMode)?.id}`}}>
                         <input type="submit" className="border-2 border-white text-white bg-green-700 p-1.5 rounded-xl w-30 hover:bg-green-900" value="Jouer"/>
                     </Link>
                 </form>
