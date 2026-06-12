@@ -11,10 +11,12 @@ import Inscription from "./pages/Inscription";
 import Connexion from "./pages/Connexion";
 
 // Mode de jeu
-import Selection from "./pages/mode-de-jeu/Selection";
-import Entrainement from "./pages/mode-de-jeu/Entrainement";
+import Selection from "./pages/Selection";
+import Entrainement from "./pages/Entrainement";
 import Classique from "./pages/mode-de-jeu/Classique";
-import Challenge from "./pages/mode-de-jeu/Challenge";
+import Challenge from "./pages/Difficulte";
+
+import ChoixDifficulte from "./pages/ChoixDifficulte";
 
 // Difficultés
 import Facile from "./pages/difficultes/Facile";
@@ -76,6 +78,7 @@ const App = () => {
         <Route path="/entrainement" element={<Entrainement/>}></Route>
         <Route path="/classique" element={<Classique/>}></Route>
         <Route path="/challenge" element={<Challenge/>}></Route>
+        <Route path="/choix-difficulte" element={<ChoixDifficulte/>}></Route>
 
         // Difficultés
         <Route path="/facile" element={<Facile/>}></Route>
