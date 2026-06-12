@@ -33,7 +33,13 @@ body {
 
 @layer components {
     .btn-primary {
-        @apply inline-block text-center text-black font-ztnature font-bold text-xl italic w-[280px] py-4 bg-white rounded-sm;
+        @apply inline-block text-center text-black font-ztnature font-bold text-xl italic w-[280px] py-4 bg-white border-transparent border-3 rounded-lg cursor-pointer
+        hover:bg-gray-300 hover:border-gray-300 transition-all ease-out;
+    }
+
+    .btn-secondary {
+        @apply inline-block text-center text-white font-ztnature font-bold text-xl italic w-[280px] py-4 bg-transparent border-3 border-white rounded-lg cursor-pointer
+        hover:bg-white hover:text-black transition-all ease-out;
     }
 }
 
