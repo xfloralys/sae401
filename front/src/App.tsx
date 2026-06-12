@@ -16,6 +16,8 @@ import Entrainement from "./pages/mode-de-jeu/Entrainement";
 import Classique from "./pages/mode-de-jeu/Classique";
 import Challenge from "./pages/mode-de-jeu/Challenge";
 
+import ChoixDifficulte from "./pages/ChoixDifficulte";
+
 // Difficultés
 import Facile from "./pages/difficultes/Facile";
 import Moyen from "./pages/difficultes/Moyen";
@@ -76,6 +78,7 @@ const App = () => {
         <Route path="/entrainement" element={<Entrainement/>}></Route>
         <Route path="/classique" element={<Classique/>}></Route>
         <Route path="/challenge" element={<Challenge/>}></Route>
+        <Route path="/choix-difficulte" element={<ChoixDifficulte/>}></Route>
 
         // Difficultés
         <Route path="/facile" element={<Facile/>}></Route>

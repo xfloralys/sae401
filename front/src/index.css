@@ -7,7 +7,9 @@
     h2 {
         @apply font-ztnature text-2xl font-bold my-8;
     }
-
+    input[type="button"] {
+        @apply border-2 border-gray-700 p-1.5 rounded-xl w-30 hover:bg-gray-300
+    }
 }
 
 
