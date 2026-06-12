@@ -1,14 +1,39 @@
 @import 'tailwindcss';
+
+/* ===== LAYERS ===== */
 @layer base {
-    h1 
-    {
-        @apply font-ztnature text-3xl font-bold;
+body {
+        @apply bg-gray-800 text-white font-ztnature
+    }
+
+    /* Heading */
+    h1 {
+        @apply font-ztnature text-4xl font-bold;
     }
     h2 {
-        @apply font-ztnature text-2xl font-bold my-8;
+        @apply font-ztnature text-3xl font-bold; /* my-8 */
     }
+    h3 {
+        @apply font-ztnature text-2xl font-bold;
+    }
+    h4 {
+        @apply font-ztnature text-xl font-bold;
+    }
+    h5 {
+        @apply font-ztnature text-lg font-bold;
+    }
+    h6 {
+        @apply font-ztnature text-sm font-bold;
+    }
+
     input[type="button"] {
         @apply border-2 border-gray-700 p-1.5 rounded-xl w-30 hover:bg-gray-300
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-block text-center text-black font-ztnature font-bold text-xl italic w-[280px] py-4 bg-white rounded-sm;
     }
 }
 
