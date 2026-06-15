@@ -7,8 +7,8 @@ type Props = {
 const ChoixDifficulte = ({difficultyChoices, selectedDifficulty, setSelectedDifficulty}: Props) => {
    return (
         <>
-            <div className="w-full flex flex-col justify-center items-center gap-2">
-                <h4>Choix de la difficulté</h4>
+            <div className="w-full flex flex-col justify-center items-center gap-2 pb-8">
+                <h4 className="pb-1">Choix de la difficulté</h4>
                 
                 <div className="flex items-center gap-2">
                     {difficultyChoices.map((difficultyChoice) => (
@@ -17,7 +17,7 @@ const ChoixDifficulte = ({difficultyChoices, selectedDifficulty, setSelectedDiff
                                 type="radio" id={difficultyChoice.id} name={difficultyChoice.name} value={difficultyChoice.id} checked={selectedDifficulty === difficultyChoice.id} onChange={(e) => setSelectedDifficulty(e.target.value)} className="hidden"
                             />
 
-                            <label htmlFor={difficultyChoice.id} className="border-2 border-gray-700 p-1.5 rounded-xl w-30 hover:bg-gray-300">
+                            <label htmlFor={difficultyChoice.id} className={selectedDifficulty === difficultyChoice.id ? "btn-difficulty-selected" : "btn-difficulty"}>
                                 {difficultyChoice.label}
                             </label>
                         </div>

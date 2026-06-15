@@ -7,7 +7,7 @@ type Props = {
 const ChoixMode = ({gameModes, selectedMode, setSelectedMode}: Props) => {
    return (
         <>
-            <div className="w-full flex flex-col justify-center items-center gap-2 pb-8">
+            <div className="w-full flex flex-col justify-center items-center gap-2 pb-4">
                 <h4>Choix du mode de jeu</h4>
                 
                 <div className="w-full flex flex-col justify-center items-center gap-2 pb-8">
@@ -15,7 +15,7 @@ const ChoixMode = ({gameModes, selectedMode, setSelectedMode}: Props) => {
                         <div key={gameMode.id}>
                             <input type="radio" id={gameMode.id} name={gameMode.name} value={gameMode.id} checked={selectedMode === gameMode.id} onChange={(e) => setSelectedMode(e.target.value)} className="hidden" />
 
-                            <label htmlFor={gameMode.id} className="btn-secondary">
+                            <label htmlFor={gameMode.id} className={selectedMode === gameMode.id ? "btn-secondary-selected" : "btn-secondary"}>
                                 {gameMode.label}
                             </label>
                         </div>

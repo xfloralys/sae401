@@ -41,6 +41,19 @@ body {
         @apply inline-block text-center text-white font-ztnature font-bold text-xl italic w-[280px] py-4 bg-transparent border-3 border-white rounded-lg cursor-pointer
         hover:bg-white hover:text-black transition-all ease-out;
     }
+
+    .btn-secondary-selected {
+        @apply inline-block text-center text-white font-ztnature font-bold text-xl italic w-[280px] py-4 border-3 border-white rounded-lg cursor-pointer
+        transition-all ease-out bg-blue-600 hover:bg-blue-600;
+    }
+
+    .btn-difficulty {
+        @apply border-2 border-gray-700 p-1.5 rounded-xl w-30 hover:bg-gray-300 text-white hover:text-black transition-all ease-out;
+    }
+
+    .btn-difficulty-selected {
+        @apply border-2 border-gray-700 p-1.5 rounded-xl w-30 bg-orange-300 text-black transition-all ease-out;
+    }
 }
 
 

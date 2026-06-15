@@ -25,36 +25,31 @@ const ModeDeJeu = () => {
             <Header />
             <main className="container mx-auto px-8 min-h-[calc(100vh-140px)] flex justify-center items-center">
                 <section className="">
-                <h2 className="text-center">Mode de jeu</h2>
-                <p className="text-center">
-                    Lorem ipsum dolor sit amet consectetur vestibulum at dictum
-                    viverra mi fermentum at pellentesque risus rhoncus.
-                </p>
+                <h2 className="text-center pb-8">Mode de jeu</h2>
+                <p className="text-lg text-center pb-4">Tu as le choix entre trois modes de jeu :</p>
+                <ul className="pb-2">
+                    <li><p className="pb-2 m-w-80 text-center"><u>Le mode entraînement</u> : tu peux tenter de placer les cartes correctement autant de fois que tu veux sans recevoir de punition en cas d’erreur.</p></li>
+                    <li><p className="pb-2 m-w-80 text-center"><u>Le mode classique</u> : à chaque erreur, tu reçois une carte supplémentaire. Le but est toujours de se débarrasser de toutes les cartes que tu as en main.</p></li>
+                    <li><p className="pb-2 m-w-80 text-center"><u>Le mode challenge</u> : à chaque fois que tu places une carte, tu en recevras une nouvelle. Le but est d’atteindre le meilleur score avant de faire une erreur.</p></li>
+                </ul>
+
                 <form action="#" method="post" className="pt-10">
-                        <ChoixMode
-                            gameModes={gameModes}
-                            selectedMode={selectedMode}
-                            setSelectedMode={setSelectedMode}
-                        />
-                        <ChoixDifficulte
-                            difficultyChoices={difficultyChoices}
-                            selectedDifficulty={selectedDifficulty}
-                            setSelectedDifficulty={setSelectedDifficulty}
-                        />
-                        <p className="p-mode">
-                            Choix actuel du mode de jeu : {
-                                gameModes.find(mode => mode.id === selectedMode)?.label
-                            }
-                        </p>
-                        <p className="p-diff">
-                            Choix actuel de la difficulté : {
-                                difficultyChoices.find(diff => diff.id === selectedDifficulty)?.label
-                            }
-                        </p>
-                        <Link to={{pathname: `/jeu`, search: `?diff=${difficultyChoices.find(diff => diff.id === selectedDifficulty)?.id}&mode=${gameModes.find(mode => mode.id === selectedMode)?.id}`}}>
-                            <input type="submit" className="border-2 border-white text-white bg-green-700 p-1.5 rounded-xl w-30 hover:bg-green-900" value="Jouer"/>
-                        </Link>
-                    </form>
+                    <ChoixMode
+                        gameModes={gameModes}
+                        selectedMode={selectedMode}
+                        setSelectedMode={setSelectedMode}
+                    />
+
+                    <ChoixDifficulte
+                        difficultyChoices={difficultyChoices}
+                        selectedDifficulty={selectedDifficulty}
+                        setSelectedDifficulty={setSelectedDifficulty}
+                    />
+
+                    <Link to={{pathname: `/jeu`, search: `?diff=${difficultyChoices.find(diff => diff.id === selectedDifficulty)?.id}&mode=${gameModes.find(mode => mode.id === selectedMode)?.id}`}}>
+                        <input type="submit" className="border-2 border-white text-white bg-green-700 p-1.5 rounded-xl w-30 hover:bg-green-900" value="Jouer"/>
+                    </Link>
+                </form>
                 </section>
             </main>
             <Footer />
