@@ -2,9 +2,11 @@ import { create } from "zustand";
 import type { CardOrderStore } from "./cardOrder.types";
 import type { Card } from "../../types/card";
 import type { CardOrder } from "../../types/cardOrder";
+import { useCardStore } from "../card/useCardStore";
 
-export const useCardOrderStore = create<CardOrderStore>((set) => ({
+export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
     cardOrder: null,
+    currentTimeline: [],
     actions: {
         generateCardOrder: (cards: Card[]) => {
             const seasons = cards.map((c) => {
@@ -17,6 +19,26 @@ export const useCardOrderStore = create<CardOrderStore>((set) => ({
             set(() => ({cardOrder: generatedOrder}));
             // console.log("Ordre des cartes : ");
             // console.log(generatedOrder);
-        }
+        },
+        initTimeline: () => {
+            const {cards} = useCardStore.getState();
+            set({currentTimeline: Array.from(cards).map((c, idx) => idx !== 0 ? null : Math.floor((Math.random() * cards.length - 1)).toString())});
+            const {currentTimeline} = get();
+            console.log("TIMELINE");
+            console.log(currentTimeline);
+        },
+        setCardAt: (card, slotIdx) => {
+            const {cards} = useCardStore.getState();
+            if (slotIdx < 0 || slotIdx > cards.length) {
+                throw new Error("Slot index invalide");
+            }
+            const {currentTimeline} = get();
+            if (currentTimeline[slotIdx] !== null) {
+                return;
+            }
+            const updated = [...currentTimeline];
+            updated[slotIdx] = card.id.toString();
+            set({currentTimeline: updated});
+        },
     }
 }))
