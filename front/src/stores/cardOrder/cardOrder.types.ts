@@ -9,6 +9,6 @@ export type CardOrderStore = {
 
 export type CardOrderActions = {
     generateCardOrder: (givenCards: Card[]) => void,
-    initTimeline: () => void,
+    initTimeline: (cards: Card[]) => void,
     setCardAt: (card: Card, slotIdx: number) => void
 }

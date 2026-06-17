@@ -20,12 +20,11 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
             // console.log("Ordre des cartes : ");
             // console.log(generatedOrder);
         },
-        initTimeline: () => {
-            const {cards} = useCardStore.getState();
+        initTimeline: (cards: Card[]) => {
             set({currentTimeline: Array.from(cards).map((c, idx) => idx !== 0 ? null : Math.floor((Math.random() * cards.length - 1)).toString())});
-            const {currentTimeline} = get();
-            console.log("TIMELINE");
-            console.log(currentTimeline);
+            // const {currentTimeline} = get();
+            // console.log("TIMELINE");
+            // console.log(currentTimeline);
         },
         setCardAt: (card, slotIdx) => {
             const {cards} = useCardStore.getState();

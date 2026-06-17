@@ -11,12 +11,14 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import type { Card } from "../types/card";
+import { useEffect, useState } from "react";
 
 const Jeu = () => {
    const {cards} = useCardStore();
    const cardsBySlot = useCardsBySlot();
    const {generatePlayerCards, setNbCardsFromDifficulty} = useCardActions();
    const {generateCardOrder, initTimeline, setCardAt} = useCardOrderActions();
+   const [isTimelineInitiated, setIsTimelineInitiated] = useState(false);
    const [searchParams, setSearchParams] = useSearchParams();
 
    // Récupération des paramètres de l'URL
@@ -28,8 +30,10 @@ const Jeu = () => {
    // Initialisation du jeu
    generateCardOrder(cards);
    const generatedCards = generatePlayerCards(setNbCardsFromDifficulty(getParamValue("diff")));
-   // initTimeline();
-
+   if (!isTimelineInitiated) {
+      initTimeline(cards);
+      setIsTimelineInitiated(true);
+   }
 
    // Gestion Drag and Drop
    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
@@ -45,7 +49,7 @@ const Jeu = () => {
       <DndProvider backend={backend}>
          <Header/>
          <main className="container mx-auto p-4">
-            <section>
+            <section className="grid gap-4">
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
 
                {/* Cartes à placer */}
