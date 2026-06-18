@@ -1,5 +1,23 @@
 [
   {
+    "Season": "2025-26",
+    "Lg": "NBA",
+    "Player": "Jalen Brunson",
+    "Age": 29,
+    "Tm": "NYK",
+    "G": 5,
+    "MP": 39.2,
+    "PTS": 32.6,
+    "TRB": 4.2,
+    "AST": 4.6,
+    "STL": 2.0,
+    "BLK": 0.0,
+    "FG%": ".421",
+    "3P%": ".389",
+    "FT%": ".860",
+    "Image": "https://www.basketball-reference.com/req/202605210/images/headshots/brunsja01.jpg"
+  },
+  {
     "Season": "2024-25",
     "Lg": "NBA",
     "Player": "Shai Gilgeous-Alexander",
