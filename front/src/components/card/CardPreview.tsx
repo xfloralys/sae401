@@ -81,9 +81,6 @@ const CardPreview = ({ card, onViewDetail = () => { } }: Props) => {
             </aside>
 
             <div className="w-full h-[20%] flex flex-col justify-center items-center py-1 border-t-5 border-slate-600">
-                {/* <p className="text-xl font-bold font-light truncate">{card.playerFirstName}</p>
-                <p className="text-2xl font-bold uppercase truncate mt-[-6px]">{card.playerLastName}</p> */}
-
                 <h5 id={headingId} className="font-light truncate text-ellipsis">{card.playerFirstName}</h5>
                 <h3 id={headingId} className="uppercase truncate txt-ellipsis mt-[-6px]">{card.playerLastName}</h3>
             </div>
