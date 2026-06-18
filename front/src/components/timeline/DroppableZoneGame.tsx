@@ -39,7 +39,7 @@ const DroppableZoneGame = ({slotIndex, card, onDropCard}: Props) => {
             {card && (
                 <img
                 src={card.image}
-                alt={card.player}
+                alt={card.playerFirstName + " " + card.playerLastName}
                 className="w-full h-full object-cover"
                 />
             )}

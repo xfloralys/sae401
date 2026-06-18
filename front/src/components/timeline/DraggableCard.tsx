@@ -28,7 +28,7 @@ const DraggableCard = ({card}: Props) => {
         >
             <img
                 src={card.image}
-                alt={card.player}
+                alt={card.playerFirstName + " " + card.playerLastName}
                 // draggable="false"
                 className="w-full aspect-square object-cover"
             />
