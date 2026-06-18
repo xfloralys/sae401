@@ -35,8 +35,7 @@ export const useCardStore = create<CardStore>((set, get) => ({
         },
         generatePlayerCards: (nbCards: number, availableCards: Card[]) => {
             const {actions} = get();
-            return actions.randomizeCards(nbCards, availableCards) as Card[];
-            // return actions.rerollDuplicateCards(actions.randomizeCards(nbCards, availableCards), availableCards) as Card[];
+            return actions.rerollDuplicateCards(actions.randomizeCards(nbCards, availableCards), availableCards) as Card[];
         },
         rollRandomCard: (availableCards: Card[]) => {
             return availableCards.at(Math.ceil(Math.random() * (availableCards.length - 1))) as Card;
@@ -53,10 +52,12 @@ export const useCardStore = create<CardStore>((set, get) => ({
             return 5 + 2 * difficulte;
         },
         rerollDuplicateCards: (currentCards: Card[], availableCards: Card[]) => {
-            const {cards, actions} = get();
-            /* while (cards.find((c) => c === currentCards.at(c.id)) !== null) {
-                return actions.randomizeCards(currentCards.length, availableCards);
-            } */
+            const {actions} = get();
+            let tempArray = [...new Set(currentCards)];
+            while (tempArray.length < currentCards.length) {
+                tempArray = [...new Set(actions.randomizeCards(currentCards.length, availableCards))];
+            }
+            return tempArray;
         }
     }
 }))
