@@ -50,7 +50,10 @@ const Jeu = () => {
          <Header/>
          <main className="container mx-auto p-4">
             <section className="grid gap-4">
+
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
+               
+               
                {/* Cartes à placer */}
                <p>Cartes à placer</p>
                <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-4">
@@ -58,7 +61,6 @@ const Jeu = () => {
                      <DraggableCard key={idx} card={c}
                   />))}
                </div>
-
                {/* Timeline */}
                <p>La timeline</p>
                <div className="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
@@ -71,6 +73,7 @@ const Jeu = () => {
                      />
                   ))}
                </div>
+
             </section>
          </main>
          <Footer/>
