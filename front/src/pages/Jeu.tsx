@@ -11,7 +11,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import type { Card } from "../types/card";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Jeu = () => {
    const {cards} = useCardStore();
@@ -19,6 +19,7 @@ const Jeu = () => {
    const {generatePlayerCards, setNbCardsFromDifficulty} = useCardActions();
    const {generateCardOrder, initTimeline, setCardAt} = useCardOrderActions();
    const [isTimelineInitiated, setIsTimelineInitiated] = useState(false);
+   const [playerCards, setPlayerCards] = useState<Card[]>([]);
    const [searchParams, setSearchParams] = useSearchParams();
 
    // Récupération des paramètres de l'URL
@@ -29,9 +30,9 @@ const Jeu = () => {
 
    // Initialisation du jeu
    generateCardOrder(cards);
-   const generatedCards = generatePlayerCards(setNbCardsFromDifficulty(getParamValue("diff")));
    if (!isTimelineInitiated) {
       initTimeline(cards);
+      setPlayerCards(generatePlayerCards(setNbCardsFromDifficulty(getParamValue("diff"))));
       setIsTimelineInitiated(true);
    }
 
@@ -57,7 +58,7 @@ const Jeu = () => {
                {/* Cartes à placer */}
                <p>Cartes à placer</p>
                <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-4">
-                  {generatedCards.map((c, idx) => (
+                  {playerCards.map((c, idx) => (
                      <DraggableCard key={idx} card={c}
                   />))}
                </div>
