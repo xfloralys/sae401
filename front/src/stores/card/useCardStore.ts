@@ -33,30 +33,30 @@ export const useCardStore = create<CardStore>((set, get) => ({
             set(() => ({cards: formattedData}));
             return formattedData;
         },
-        generatePlayerCards: (nbCards: number) => {
+        generatePlayerCards: (nbCards: number, availableCards: Card[]) => {
             const {actions} = get();
-            return actions.rerollDuplicateCards(actions.randomizeCards(nbCards)) as Card[];
+            return actions.randomizeCards(nbCards, availableCards) as Card[];
+            // return actions.rerollDuplicateCards(actions.randomizeCards(nbCards, availableCards), availableCards) as Card[];
         },
-        rollRandomCard: () => {
-            const {cards} = get();
-            return cards.at(Math.ceil(Math.random() * (cards.length - 1))) as Card;
+        rollRandomCard: (availableCards: Card[]) => {
+            return availableCards.at(Math.ceil(Math.random() * (availableCards.length - 1))) as Card;
         },
-        randomizeCards: (nbCards: number) => {
+        randomizeCards: (nbCards: number, availableCards: Card[]) => {
             const {actions} = get();
             const randomCards = [];
             for (let i = 0; i < nbCards; i++) {
-                randomCards[i] = actions.rollRandomCard();
+                randomCards[i] = actions.rollRandomCard(availableCards);
             }
             return randomCards.filter((key, value) => value != undefined) as Card[];
         },
         setNbCardsFromDifficulty: (difficulte: number) => {
             return 5 + 2 * difficulte;
         },
-        rerollDuplicateCards: (currentCards: Card[]) => {
+        rerollDuplicateCards: (currentCards: Card[], availableCards: Card[]) => {
             const {cards, actions} = get();
-            while (cards.find((c) => c === currentCards.at(c.id)) !== null) {
-                return actions.randomizeCards(currentCards.length);
-            }
+            /* while (cards.find((c) => c === currentCards.at(c.id)) !== null) {
+                return actions.randomizeCards(currentCards.length, availableCards);
+            } */
         }
     }
 }))

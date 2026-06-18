@@ -8,9 +8,9 @@ export type CardStore = {
 
 export type CardActions = {
     loadCards: () => void,
-    generatePlayerCards: (nbCards: number) => Card[],
-    rollRandomCard: () => Card;
-    randomizeCards: (nbCards: number) => Card[],
+    generatePlayerCards: (nbCards: number, availableCards: Card[]) => Card[],
+    rollRandomCard: (availableCards: Card[]) => Card;
+    randomizeCards: (nbCards: number, availableCards: Card[]) => Card[],
     setNbCardsFromDifficulty: (difficulte: number) => number,
-    rerollDuplicateCards: (currentCards: Card[]) => Card[] | undefined;
+    rerollDuplicateCards: (currentCards: Card[], availableCards: Card[]) => Card[] | undefined;
 }

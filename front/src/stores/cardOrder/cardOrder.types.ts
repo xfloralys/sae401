@@ -10,5 +10,6 @@ export type CardOrderStore = {
 export type CardOrderActions = {
     generateCardOrder: (givenCards: Card[]) => void,
     initTimeline: (cards: Card[]) => void,
-    setCardAt: (card: Card, slotIdx: number) => void
+    setCardAt: (card: Card, slotIdx: number) => void,
+    isOrderCorrect: (newTimeline: (string | null)[]) => boolean
 }

@@ -11,13 +11,15 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import type { Card } from "../types/card";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useCardOrderStore } from "../stores/cardOrder/useCardOrderStore";
 
 const Jeu = () => {
    const {cards} = useCardStore();
    const cardsBySlot = useCardsBySlot();
    const {generatePlayerCards, setNbCardsFromDifficulty} = useCardActions();
    const {generateCardOrder, initTimeline, setCardAt} = useCardOrderActions();
+   const {currentTimeline} = useCardOrderStore();
    const [isTimelineInitiated, setIsTimelineInitiated] = useState(false);
    const [playerCards, setPlayerCards] = useState<Card[]>([]);
    const [searchParams, setSearchParams] = useSearchParams();
@@ -29,12 +31,16 @@ const Jeu = () => {
    }
 
    // Initialisation du jeu
-   generateCardOrder(cards);
    if (!isTimelineInitiated) {
       initTimeline(cards);
-      setPlayerCards(generatePlayerCards(setNbCardsFromDifficulty(getParamValue("diff"))));
+      generateCardOrder(cards);
+      setPlayerCards(generatePlayerCards(setNbCardsFromDifficulty(getParamValue("diff")), cards));
       setIsTimelineInitiated(true);
    }
+
+   // Actualisation de la main du joueur suite à un drop
+   const availableCards = useMemo(() => cards.filter((card) => !currentTimeline.includes(card.id.toString())), [cards, currentTimeline]);
+   const visiblePlayerCards = useMemo(() => playerCards.filter(card => availableCards.includes(card)), [playerCards, availableCards]);
 
    // Gestion Drag and Drop
    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
@@ -44,6 +50,7 @@ const Jeu = () => {
       slotIndex: number
    ) => {
       setCardAt(card, slotIndex);
+      setPlayerCards(playerCards.filter((card) => availableCards.includes(card)));
    };
 
    return (
@@ -51,17 +58,16 @@ const Jeu = () => {
          <Header/>
          <main className="container mx-auto p-4">
             <section className="grid gap-4">
-
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
-               
-               
+
                {/* Cartes à placer */}
                <p>Cartes à placer</p>
                <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-4">
-                  {playerCards.map((c, idx) => (
+                  {visiblePlayerCards.map((c, idx) => (
                      <DraggableCard key={idx} card={c}
                   />))}
                </div>
+
                {/* Timeline */}
                <p>La timeline</p>
                <div className="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
@@ -74,7 +80,6 @@ const Jeu = () => {
                      />
                   ))}
                </div>
-
             </section>
          </main>
          <Footer/>
