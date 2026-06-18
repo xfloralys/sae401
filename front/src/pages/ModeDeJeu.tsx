@@ -33,7 +33,7 @@ const ModeDeJeu = () => {
                     <li><p className="pb-2 m-w-80 text-center"><u>Le mode challenge</u> : à chaque fois que tu places une carte, tu en recevras une nouvelle. Le but est d’atteindre le meilleur score avant de faire une erreur.</p></li>
                 </ul>
 
-                <form action="#" method="post" className="pt-10">
+                <form action="#" method="post" className="pt-10 flex flex-col items-center">
                     <ChoixMode
                         gameModes={gameModes}
                         selectedMode={selectedMode}
@@ -46,7 +46,7 @@ const ModeDeJeu = () => {
                         setSelectedDifficulty={setSelectedDifficulty}
                     />
 
-                    <Link to={{pathname: `/jeu`, search: `?diff=${difficultyChoices.find(diff => diff.id === selectedDifficulty)?.id}&mode=${gameModes.find(mode => mode.id === selectedMode)?.id}`}}>
+                    <Link to={`/jeu?mode=${selectedMode}&diff=${selectedDifficulty}`}>
                         <input type="submit" className="border-2 border-white text-white bg-green-700 p-1.5 rounded-xl w-30 hover:bg-green-900" value="Jouer"/>
                     </Link>
                 </form>
