@@ -46,7 +46,7 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
                 const tempCardId = cardId;
                 const tempNextCardId = iterable[idx + 1];
                 if ((idx + 1 < iterable.length) && !errorFound) {
-                    errorFound = Number.parseInt(tempCardId) > Number.parseInt(tempNextCardId) ? true : false;
+                    errorFound = Number.parseInt(tempCardId) < Number.parseInt(tempNextCardId) ? true : false;
                 }
             });
             return errorFound ? false : true;
