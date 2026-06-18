@@ -16,12 +16,14 @@ export const useCardStore = create<CardStore>((set, get) => ({
                     Object.defineProperties(card, {
                         id: {value: idx},
                         season: {value: c.Season},
-                        player: {value: c.Player},
+                        playerFirstName: {value: c.PlayerFirstName},
+                        playerLastName: {value: c.PlayerLastName},
                         team: {value: c.Tm},
                         pointsPerGame: {value: c.PTS},
                         reboundsPerGame: {value: c.TRB},
                         assistsPerGame: {value: c.AST},
-                        image: {value: c.Image}
+                        image: {value: c.Image},
+                        altText: {value: c.AltText}
                     })
                     return card as Card;
                 })
