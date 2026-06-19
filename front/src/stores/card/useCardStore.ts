@@ -63,7 +63,7 @@ export const useCardStore = create<CardStore>((set, get) => ({
         addRandomCard: (currentCards: Card[]) => {
             const {cards} = get();
             const {currentTimeline} = useCardOrderStore.getState();
-            const availableCards = cards.filter((card) => !currentTimeline.includes(card.id.toString()));
+            const availableCards = cards.filter((card) => !currentTimeline.includes(card.id.toString())).filter((card) => !currentCards.includes(card));
             return [...currentCards, availableCards.at(Math.floor(Math.random() * (availableCards.length - 1)))];
         }
     }
