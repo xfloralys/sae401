@@ -76,7 +76,7 @@ const Jeu = () => {
                </div>
 
                {/* Cartes à placer */}
-               {!isGameOver(getParamValue("mode"), playerCards) &&
+               {!isGameOver(getParamValue("mode"), visiblePlayerCards) &&
                <>
                   <h2>Cartes à placer</h2>
                   <div className=" grid grid-flow-col grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center overflow-x-auto">
@@ -87,7 +87,7 @@ const Jeu = () => {
                </>
                }
 
-               {isGameOver(getParamValue("mode"), playerCards) && 
+               {isGameOver(getParamValue("mode"), visiblePlayerCards) && 
                <>
                   <h2 className="w-full text-center">Bravo, vous avez terminé le jeu</h2>
                   {getParamValue("mode") === 1 &&

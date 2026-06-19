@@ -69,7 +69,7 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
             if (gamemode === 2) {
                 return nbErrors > 2 ? true : false;
             }
-            return playerCards.length === 1 ? true : false;
+            return playerCards.length === 0 ? true : false;
         }
     }
 }))
