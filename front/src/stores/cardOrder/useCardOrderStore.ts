@@ -57,7 +57,7 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
             });
 
             // Mode classique - s'il y a une erreur
-            set({nbErrors: gamemode === 1 ? (errorFound ? nbErrors + 1 : nbErrors) : nbErrors});
+            set({nbErrors: gamemode === 1 || gamemode === 2 ? (errorFound ? nbErrors + 1 : nbErrors) : nbErrors});
             // Mode challenge - si le placement est correct, le joueur gagne un point
             set({score: gamemode === 2 ? (errorFound ? score : score + 1) : score});
 
