@@ -4,12 +4,15 @@ import type { CardOrder } from "../../types/cardOrder.ts";
 export type CardOrderStore = {
     cardOrder: CardOrder | null,
     currentTimeline: (string | null)[],
+    nbErrors: number,
+    score: number,
     actions: CardOrderActions
 }
 
 export type CardOrderActions = {
     generateCardOrder: (givenCards: Card[]) => void,
     initTimeline: (cards: Card[]) => void,
-    setCardAt: (card: Card, slotIdx: number) => void,
-    isOrderCorrect: (newTimeline: (string | null)[]) => boolean
+    tryToSetCardAt: (playerCards: Card[], gamemode: number, card: Card, slotIdx: number) => boolean,
+    isOrderCorrect: (playerCards: Card[], gamemode: number, newTimeline: (string | null)[]) => boolean,
+    isGameOver: (gamemode: number, playerCards: Card[]) => boolean
 }

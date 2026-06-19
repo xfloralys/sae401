@@ -6,8 +6,10 @@ import { useCardStore } from "../card/useCardStore";
 export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
     cardOrder: null,
     currentTimeline: [],
+    nbErrors: 0,
+    score: 0,
     actions: {
-        generateCardOrder: (cards: Card[]) => {
+        generateCardOrder: (cards) => {
             const seasons = cards.map((c) => {
                 const seasonArray = c.season.split("-");
                 return Number.parseInt(seasonArray[0]);
@@ -20,10 +22,10 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
                 order: generatedOrder
             }});
         },
-        initTimeline: (cards: Card[]) => {
+        initTimeline: (cards) => {
             set({currentTimeline: [null, Math.floor((Math.random() * cards.length - 1)).toString(), null]});
         },
-        setCardAt: (card, slotIdx) => {
+        tryToSetCardAt: (playerCards, gamemode, card, slotIdx) => {
             const {cards} = useCardStore.getState();
             const {isOrderCorrect} = get().actions;
 
@@ -37,9 +39,13 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
 
             // Tentative d'insertion de la carte; si l'ordre correspond à celui que l'on recherche, la carte peut être placée. Sinon, rien ne se passe
             const updated = [...currentTimeline.slice(0, slotIdx), null, card.id.toString(), null, ...currentTimeline.slice(slotIdx + 1)]; 
-            return isOrderCorrect(updated) ? set({currentTimeline: updated}) : set({currentTimeline: currentTimeline});
+            const errorFound: boolean = isOrderCorrect(playerCards, gamemode, updated);
+            set({currentTimeline:  errorFound ? updated : currentTimeline});
+            return errorFound;
         },
-        isOrderCorrect: (newTimeline) => {
+        isOrderCorrect: (playerCards, gamemode, newTimeline) => {
+            // const {addRandomCard} = useCardStore.getState().actions;
+            const {nbErrors, score} = get();
             let errorFound = false;
             const iterable = [...newTimeline.filter((c) => c !== null)];
             iterable.map((cardId, idx) => {
@@ -49,7 +55,21 @@ export const useCardOrderStore = create<CardOrderStore>((set, get) => ({
                     errorFound = Number.parseInt(tempCardId) < Number.parseInt(tempNextCardId) ? true : false;
                 }
             });
+
+            // Mode classique - s'il y a une erreur
+            set({nbErrors: gamemode === 1 ? (errorFound ? nbErrors + 1 : nbErrors) : nbErrors});
+            // Mode challenge - si le placement est correct, le joueur gagne un point
+            set({score: gamemode === 2 ? (errorFound ? score : score + 1) : score});
+
             return errorFound ? false : true;
+        },
+        isGameOver: (gamemode, playerCards) => {
+            const {nbErrors} = get();
+            // Mode challenge - trois erreurs et c'est terminé
+            if (gamemode === 2) {
+                return nbErrors > 2 ? true : false;
+            }
+            return playerCards.length === 1 ? true : false;
         }
     }
 }))

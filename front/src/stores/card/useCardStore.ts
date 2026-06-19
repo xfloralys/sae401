@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type { CardStore } from "./card.types";
 import data from '../../script/data.json';
 import type { Card } from "../../types/card";
+import { useCardOrderStore } from "../cardOrder/useCardOrderStore";
 
 export const useCardStore = create<CardStore>((set, get) => ({
     cards: [],
@@ -58,6 +59,12 @@ export const useCardStore = create<CardStore>((set, get) => ({
                 tempArray = [...new Set(actions.randomizeCards(currentCards.length, availableCards))];
             }
             return tempArray;
+        },
+        addRandomCard: (currentCards: Card[]) => {
+            const {cards} = get();
+            const {currentTimeline} = useCardOrderStore.getState();
+            const availableCards = cards.filter((card) => !currentTimeline.includes(card.id.toString()));
+            return [...currentCards, availableCards.at(Math.floor(Math.random() * (availableCards.length - 1)))];
         }
     }
 }))
