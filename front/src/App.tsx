@@ -24,9 +24,6 @@ import Jeu from "./pages/Jeu"
 import Profil from "./pages/Profil"
 
 // Anciens components
-import Admin from "./pages/Admin";
-import ExpoComposer from "./pages/ExpoComposer";
-import MyExpo from "./pages/MyExpo";
 import Page404 from "./pages/Page404";
 
 import { useCardActions, useCardsStatus } from "./stores/card/card.selectors";
@@ -68,11 +65,7 @@ const App = () => {
         <Route path="/connexion" element={<Connexion/>}></Route>
 
         // Mode de jeu
-
         <Route path="/mode-de-jeu" element={<ModeDeJeu/>}></Route>
-
-        // Difficultés
-
 
         // Jeu
         <Route path="/jeu" element={<Jeu/>}></Route>
@@ -80,10 +73,6 @@ const App = () => {
         // Profil
         <Route path="/profil" element={<Profil/>}></Route>
 
-        //----------------------------------------------------------- ancienne route
-        <Route path="/admin" element={<Admin/>}></Route>
-        <Route path="/prepare-expo" element={<ExpoComposer/>}></Route>
-        <Route path="/my-expo" element={<MyExpo/>}></Route>
         <Route path="*" element={<Page404/>}></Route>
       </Routes>
     </BrowserRouter>
