@@ -33,7 +33,7 @@ const DraggableCard = ({ card }: Props) => {
                 className="w-full aspect-square object-cover"
             /> */}
 
-            <article className="relative bg-slate-500 w-[182px] outline-5 rounded-lg outline-slate-600 overflow-hidden">
+            <article className="relative bg-slate-500 scale-90 w-[182px] outline-5 rounded-lg outline-slate-600 overflow-hidden">
                 <figure className="w-full h-[220px]">
                     <img src={card.image} alt={card.altText} className="w-full h-full object-cover" />
                 </figure>
