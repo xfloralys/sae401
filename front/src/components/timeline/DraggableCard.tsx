@@ -20,7 +20,7 @@ const DraggableCard = ({ card }: Props) => {
     return (
         <div
             ref={(node) => { drag(node) }}
-            className="overflow-hidden rounded-lg"
+            className="flex justify-center flex-wrap"
             style={{
                 opacity: isDragging ? 0 : 1,
                 zIndex: isDragging ? 1000 : 1,

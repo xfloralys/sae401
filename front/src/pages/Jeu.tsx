@@ -60,17 +60,9 @@ const Jeu = () => {
             <section className="grid gap-4">
                <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
 
-               {/* Cartes à placer */}
-               <p>Cartes à placer</p>
-               <div className="grid grid-cols-[repeat(auto-fit,minmax(4rem,1fr))] gap-4">
-                  {visiblePlayerCards.map((c, idx) => (
-                     <DraggableCard key={idx} card={c}
-                  />))}
-               </div>
-
                {/* Timeline */}
-               <p>La timeline</p>
-               <div className="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4">
+               <h2>La timeline</h2>
+               <div className=" grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] justify-items-center items-center gap-4 gap-y-8">
                   {cardsBySlot.map((c, idx) => (
                      <DroppableZoneGame
                         key={idx}
@@ -79,6 +71,14 @@ const Jeu = () => {
                         onDropCard={handleDropCard}
                      />
                   ))}
+               </div>
+
+               {/* Cartes à placer */}
+               <h2>Cartes à placer</h2>
+               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center gap-6">
+                  {visiblePlayerCards.map((c, idx) => (
+                     <DraggableCard key={idx} card={c}
+                  />))}
                </div>
             </section>
          </main>
