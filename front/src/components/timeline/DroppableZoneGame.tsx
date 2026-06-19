@@ -36,7 +36,7 @@ const DroppableZoneGame = ({ slotIndex, card, onDropCard }: Props) => {
             </p> */}
 
             {card && (
-                <article className="relative bg-slate-500 w-[182px] outline-5 rounded-lg outline-slate-600 overflow-hidden sm:scale-80">
+                <article className="relative bg-slate-500 w-[182px] outline-5 rounded-lg outline-slate-600 overflow-hidden">
                     <figure className="w-full h-[220px]">
                         <img src={card.image} alt={card.altText} className="w-full h-full object-cover" />
                     </figure>

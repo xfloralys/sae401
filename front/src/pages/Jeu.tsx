@@ -75,7 +75,7 @@ const Jeu = () => {
 
                {/* Cartes à placer */}
                <h4>Cartes à placer</h4>
-               <div className="fixed bottom-0 left-0 right-0 bg-red-600 grid grid-flow-col grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center overflow-x-auto">
+               <div className=" grid grid-flow-col grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center overflow-x-auto">
                   {visiblePlayerCards.map((c, idx) => (
                      <DraggableCard key={idx} card={c}
                   />))}
