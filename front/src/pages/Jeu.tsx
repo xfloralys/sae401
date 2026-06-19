@@ -58,11 +58,11 @@ const Jeu = () => {
          <Header/>
          <main className="container mx-auto p-4">
             <section className="grid gap-4">
-               <h2>À vous de jouer - Placez les cartes dans l'ordre correct !</h2>
+               {/* <h2 className="text-center">Placez les cartes dans l'ordre correct !</h2> */}
 
                {/* Timeline */}
-               <h2>La timeline</h2>
-               <div className=" grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] justify-items-center items-center gap-4 gap-y-8">
+               {/* <h4>La timeline</h4> */}
+               <div className="h-full overflow-y-auto grid grid-rows-[repeat(auto-fit,minmax(10rem,1fr))] justify-items-center items-center gap-4 gap-y-10 sm:grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] sm:grid-rows-none"> {/* DESKTOP : grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] justify-items-center items-center gap-4 gap-y-8 */}
                   {cardsBySlot.map((c, idx) => (
                      <DroppableZoneGame
                         key={idx}
@@ -74,8 +74,8 @@ const Jeu = () => {
                </div>
 
                {/* Cartes à placer */}
-               <h2>Cartes à placer</h2>
-               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center gap-6">
+               <h4>Cartes à placer</h4>
+               <div className="fixed bottom-0 left-0 right-0 bg-red-600 grid grid-flow-col grid-cols-[repeat(auto-fit,minmax(180px,1fr))] justify-items-center overflow-x-auto">
                   {visiblePlayerCards.map((c, idx) => (
                      <DraggableCard key={idx} card={c}
                   />))}
