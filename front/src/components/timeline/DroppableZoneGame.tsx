@@ -28,19 +28,14 @@ const DroppableZoneGame = ({ slotIndex, card, onDropCard }: Props) => {
     return (
         <div
             ref={(node) => { drop(node) }}
-            className={`aspect-square relative border border-black ${isOver ? "bg-gray-200" : ""
-                }`}
+            className={`grid grid-cols-[minmax(120px,max-content)] grid-rows-[minmax(180px,max-content)] justify-items-center items-center w-fit h-fit relative border-3 border-dashed border-gray-500 rounded-xl ${isOver ? "bg-gray-700" : ""
+            }`}
         >
-            <p className="absolute top-1 left-1 w-10 h-10 grid place-items-center rounded-full bg-black text-white text-2xl">
+            {/* <p className="absolute top-1 left-1 w-10 h-10 grid place-items-center rounded-full bg-black text-white text-2xl">
                 {slotIndex + 1}
-            </p>
+            </p> */}
 
             {card && (
-                // <img
-                // src={card.image}
-                // alt={card.playerFirstName + " " + card.playerLastName}
-                // className="w-full h-full object-cover"
-                // />
                 <article className="relative bg-slate-500 w-[182px] outline-5 rounded-lg outline-slate-600 overflow-hidden">
                     <figure className="w-full h-[220px]">
                         <img src={card.image} alt={card.altText} className="w-full h-full object-cover" />
