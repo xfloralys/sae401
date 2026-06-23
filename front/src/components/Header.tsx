@@ -12,7 +12,7 @@ const Header=()=> {
     return (
         <header className="flex justify-center items-center p-4">
             {/* Logo */}
-            <NavLink to="/accueil">
+            <NavLink to="/">
                 <h1 className="text-xl text-white font-bold text-gray-900 mb-4">NBA Finals</h1>
             </NavLink>
 

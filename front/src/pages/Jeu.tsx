@@ -22,7 +22,7 @@ const Jeu = () => {
    const {currentTimeline, nbErrors, score} = useCardOrderStore();
    const [isTimelineInitiated, setIsTimelineInitiated] = useState(false);
    const [playerCards, setPlayerCards] = useState<Card[]>([]);
-   const [searchParams, setSearchParams] = useSearchParams();
+   const [searchParams] = useSearchParams();
 
    // Récupération des paramètres de l'URL
    const getParamValue = (key: string) => {

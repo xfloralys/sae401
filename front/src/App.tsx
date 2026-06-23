@@ -3,7 +3,6 @@ import { Routes } from "react-router";
 import { Route } from "react-router";
 
 // Page d'Accueil
-import Home from "./pages/Home";
 import Accueil from "./pages/Accueil";
 
 // Page Inscription et Connexion
@@ -57,8 +56,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         // Accueil
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/accueil" element={<Accueil/>}></Route>
+        <Route path="/" element={<Accueil/>}></Route>
 
         // Inscription & Connexion 
         <Route path="/inscription" element={<Inscription/>}></Route>

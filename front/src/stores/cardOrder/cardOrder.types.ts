@@ -12,7 +12,7 @@ export type CardOrderStore = {
 export type CardOrderActions = {
     generateCardOrder: (givenCards: Card[]) => void,
     initTimeline: (cards: Card[]) => void,
-    tryToSetCardAt: (playerCards: Card[], gamemode: number, card: Card, slotIdx: number) => boolean,
-    isOrderCorrect: (playerCards: Card[], gamemode: number, newTimeline: (string | null)[]) => boolean,
+    tryToSetCardAt: (playerCards: Card[], gamemode: number, card: Card, slotIdx: number) => boolean | void,
+    isOrderCorrect: (gamemode: number, newTimeline: (string | null)[]) => boolean,
     isGameOver: (gamemode: number, playerCards: Card[]) => boolean
 }

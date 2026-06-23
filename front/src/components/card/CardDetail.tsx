@@ -60,11 +60,11 @@ return (
 
         <div className="space-y-4">
           <h2 id="popup-title" className="text-2xl font-semibold text-gray-800 text-center">
-            {card.player}
+            {card.playerFirstName} {card.playerLastName}
           </h2>
           <p className="text-lg text-gray-600 text-center">Par: {card.team}</p>
           <div className="flex justify-center mb-4">
-            <img src={card.image} alt="" className="xl:h-140object-contain rounded-lg" />
+            <img src={card.image} alt={card.altText} className="xl:h-140object-contain rounded-lg" />
           </div>
           <p className="text-sm text-gray-700">{card.season}</p>
           <p className="text-sm font-semibold text-gray-800">Année de création: {card.pointsPerGame}</p>
